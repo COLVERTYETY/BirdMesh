@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+enum Sensor {
+    TEMPERATURE = 0;
+    HUMIDITY = 1;
+    PRESSURE = 2;
+    VOLTAGE = 3;
+}
+
+message measurement {
+  fixed32 timestamp = 1;
+  double  value     = 2;
+  Sensor  sensor    = 3;
+}
+
+message GPS {
+  fixed32 timestamp  = 1;
+  double  latitude   = 2;
+  double  longitude  = 3;
+  double  altitude   = 4;
+  double speed       = 5;
+  double course      = 6;
+  fixed32 satellites = 7;
+  fixed32 hdop       = 8;
+}

@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: Birds
+      POSTGRES_PASSWORD: BirdMesh
+      POSTGRES_DB: BirdMeshDB
+      POSTGRES_INITDB_ARGS: "-c statement_timeout=3000000"
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
